@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SALZ BITE - E-skysčiai</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body class="modal-active" id="body-tag">
+
+<div class="modal-overlay" id="age-verification-modal">
+    <div class="modal-content">
+        <h2>Amžiaus patvirtinimas</h2>
+        <p>Patvirtinkite, kad esate *vyresnis nei 18 metų*, norėdami tęsti ir peržiūrėti šios svetainės turinį.</p>
+        <button onclick="verifyAge(true)">Taip, man yra 18+</button>
+        <button class="deny-btn" onclick="verifyAge(false)">Ne, man nėra 18</button>
+    </div>
+</div>
+
+<header>
+    <h1>Salz <span class="brand-color">Bite</span></h1>
+    <p>Premium kokybė | Kaina: 5.00€ | Pristatymas: 1.00€</p>
+</header>
+
+<div class="container">
+    
+    <div class="sidebar-top">
+        <h2>Rūšiavimas ir Filtrai</h2>
+        <select onchange="filterProducts(this.value)">
+            <option value="all">Visi skoniai</option>
+            <option value="ice">Lediniai skoniai</option>
+            <option value="dessert">Desertiniai skoniai</option>
+        </select>
+    </div>
+    
+    <div class="full-width-section">
+        <h2 class="section-title">✨ Akcijos: Šios savaitės pasiūlymas!</h2>
+        <p class="promo-text">Visi Banana Ice skoniai su 20% nuolaida (Kaina: 4.00€) iki sekmadienio!</p>
+    </div>
+    
+    <div class="products-grid" id="products-container">
+        </div>
+
+    <div class="cart-sidebar">
+        <h2>Jūsų krepšelis</h2>
+        <div id="cart-items">
+            <p style="color: #777;">Krepšelis tuščias</p>
+        </div>
+        
+        <div class="total-section" id="cart-summary" style="display:none;">
+            <p>Tarpinė suma: <span id="subtotal">0.00</span> €</p>
+            <p>Pristatymas: <span id="shipping">1.00</span> €</p>
+            <h3>Iš viso: <span id="total" class="brand-color">0.00</span> €</h3>
+            <button class="checkout-btn" onclick="alert('Užsakymas sėkmingas (Demo)!')">Pirkti</button>
+        </div>
+    </div>
+    
+    <div class="full-width-section">
+        <h2 class="section-title">📰 Naujienos</h2>
+        <div class="news-item">
+            <h4>Pristatome „SALZ BITE MAX“!</h4>
+            <p>Išbandykite naują, patobulintą 20ml skysčio versiją – greitai prekyboje!</p>
+        </div>
+        <div class="news-item">
+            <h4>Pristatymas per 1-2 dienas</h4>
+            <p>Atnaujinome logistiką, dabar pristatome dar greičiau visoje Lietuvoje.</p>
+        </div>
+    </div>
+    
+</div>
+
+<footer class="disclaimer">
+    <p>ĮSPĖJIMAS: Ši svetainė yra demonstracinė ir neatlieka realios komercinės veiklos.</p>
+</footer>
+
+<script>
+    /* --- Logika (JavaScript) --- */
+    
+    // IMAGE pavadinimas PATAISYTAS (ieško "strawberry_ice_cream.jpg")
+    const products = [
+        { id: 1, name: "Red Apple Ice", category: "ice", image: "red_apple_ice.jpg" },
+        { id: 2, name: "Orange Zest", category: "citrus", image: "orange_zest.jpg" },
+        { id: 3, name: "Banana Ice", category: "ice", image: "banana_ice.jpg" },
+        { id: 4, name: "Butter Mints", category: "candy", image: "butter_mints.jpg" },
+        { id: 5, name: "Unicorn Shake", category: "dessert", image: "unicorn_shake.jpg" },
+        { id: 6, name: "Pineapple Coconut", category: "fruit", image: "pineapple_coconut.jpg" },
+        { id: 7, name: "Strawberry Ice Cream", category: "dessert", image: "strawberry_ice_cream.jpg" } 
+    ];
+
+    const PRICE_PER_UNIT = 5.00;
+    const SHIPPING_COST = 1.00;
+    
+    let cart = [];
+
+    // --- Amžiaus Patikrinimo Logika ---
+    function verifyAge(isVerified) {
+        const modal = document.getElementById('age-verification-modal');
+        const body = document.getElementById('body-tag');
+
+        if (isVerified) {
+            modal.style.display = 'none';
+            body.classList.remove('modal-active');
+            renderProducts(products); 
+        } else {
+            alert("Turinys skirtas tik suaugusiems. Jūs būsite nukreiptas į Google.");
+            window.location.href = "https://www.google.com";
+        }
+    }
+    
+    // --- Rūšiavimo Logika ---
+    function filterProducts(category) {
+        let filtered;
+        if (category === 'all') {
+            filtered = products;
+        } else {
+            filtered = products.filter(p => p.category === category);
+        }
+        renderProducts(filtered);
+    }
+
+    // --- Produktų Atvaizdavimo Logika ---
+    function renderProducts(productsToRender) {
+        const container = document.getElementById('products-container');
+        container.innerHTML = productsToRender.map(product => `
+            <div class="card">
+                <span class="sale-tag">IŠPARDUOTA</span> 
+                <div class="product-image-container">
+                    <img src="${product.image}" alt="${product.name} buteliukas" class="product-img">
+                </div>
+                <h3>${product.name}</h3>
+                <p class="price">${PRICE_PER_UNIT.toFixed(2)} €</p>
+                <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Į krepšelį</button>
+            </div>
+        `).join('');
+    }
+
+    // --- Krepšelio Logika ---
+    function addToCart(id) {
+        const product = products.find(p => p.id === id);
+        cart.push(product);
+        updateCart();
+    }
+
+    function updateCart() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        const summarySection = document.getElementById('cart-summary');
+        
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p style="color: #777;">Krepšelis tuščias</p>';
+            summarySection.style.display = 'none';
+            return;
+        }
+
+        const itemCounts = {};
+        cart.forEach(item => {
+            itemCounts[item.name] = (itemCounts[item.name] || 0) + 1;
+        });
+
+        cartItemsContainer.innerHTML = Object.keys(itemCounts).map(name => `
+            <div class="cart-item">
+                <span>${name} x${itemCounts[name]}</span>
+                <span>${(itemCounts[name] * PRICE_PER_UNIT).toFixed(2)} €</span>
+            </div>
+        `).join('');
+
+        const subtotal = cart.length * PRICE_PER_UNIT;
+        const total = subtotal + SHIPPING_COST;
+
+        document.getElementById('subtotal').innerText = subtotal.toFixed(2);
+        document.getElementById('shipping').innerText = SHIPPING_COST.toFixed(2);
+        document.getElementById('total').innerText = total.toFixed(2);
+        
+        summarySection.style.display = 'block';
+    }
+
+</script>
+</body>
+</html>
