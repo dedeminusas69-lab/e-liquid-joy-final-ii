@@ -1,4 +1,4 @@
-/* --- PAGRINDINIAI BENDRI STILIAI (LIGHT MODE) --- */
+* --- PAGRINDINIAI BENDRI STILIAI (LIGHT MODE) --- */
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -82,10 +82,19 @@ header {
     z-index: 100;
 }
 
+/* 3D / GILUMO EFEKTO PAVADINIMAS */
 header h1 {
-    font-size: 2rem;
-    display: inline-block;
+    font-family: 'Bebas Neue', sans-serif; /* Naujas šriftas */
+    font-size: 3.5rem; /* Padidiname, kad geriau matytųsi */
     margin: 0;
+    /* KURIA 3D / GILUMO EFEKTĄ: */
+    text-shadow: 
+        2px 2px 0 #999999, /* Šešėlio sluoksniai, imituojantys gylį */
+        4px 4px 0 #777777,
+        6px 6px 0 #555555,
+        8px 8px 0 #333333; /* Galutinė gylio spalva */
+    line-height: 1; /* Sulyginame eilutę */
+    color: #FFFFFF; /* Pagrindinė spalva yra balta */
 }
 
 header p {
@@ -285,7 +294,7 @@ select {
 }
 
 
-/* --- KONTAKTAI IR PORAŠTĖ (NAUJAS STILIUS) --- */
+/* --- KONTAKTAI IR PORAŠTĖ (GALUTINIS STILIUS) --- */
 
 .main-footer {
     background-color: #383838;
