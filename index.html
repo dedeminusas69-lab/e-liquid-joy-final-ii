@@ -20,7 +20,7 @@
 
 <header>
     <h1>Salz <span class="brand-color">Bite</span></h1>
-    <p>⚡ *Ateities Skonis čia.* | Atrask Premium Kokybę ir Itin Greitą Pristatymą Lietuvoje! 🚀</p>
+    <p>⚡ *Ateities Skonis čia.* | Atrask Premium Kokybę Lietuvoje! 🚀</p>
 </header>
 
 <div class="container">
@@ -42,7 +42,7 @@
     
     <div class="full-width-section">
         <h2 class="section-title">✨ Akcijos: Šios savaitės pasiūlymas!</h2>
-        <p class="promo-text">Visi Banana Ice skoniai su 20% nuolaida (Kaina: 4.00€) iki sekmadienio!</p>
+        <p class="promo-text">Perkant daugiau nei 4vnt. Nemokamas pristatymas iki penktadienio!</p>
     </div>
     
     <div class="products-grid" id="products-container">
@@ -58,15 +58,15 @@
             <p>Tarpinė suma: <span id="subtotal">0.00</span> €</p>
             <p>Pristatymas: <span id="shipping">1.00</span> €</p>
             <h3>Iš viso: <span id="total" class="brand-color">0.00</span> €</h3>
-            <button class="checkout-btn" onclick="alert('Užsakymas sėkmingas (Demo)!')">Pirkti</button>
+            <button class="checkout-btn" onclick="alert('Užsakymas sėkmingas. Paspausk ant apačioje nurodytų soc. tinklų ir atsiūsk krepšelio nuotrauką)">Pirkti</button>
         </div>
     </div>
     
     <div class="full-width-section">
-        <h2 class="section-title">📰 Naujienos</h2>
+        <h2 class="section-title">📰 </h2>
         <div class="news-item">
-            <h4>Pristatome „SALZ BITE MAX“!</h4>
-            <p>Išbandykite naują, patobulintą 20ml skysčio versiją – greitai prekyboje!</p>
+            <h4></h4>
+            <p></p>
         </div>
         <div class="news-item">
             <h4>Pristatymas per 1-2 dienas</h4>
@@ -81,16 +81,16 @@
         
         <div class="footer-section contact-info">
             <h3>Kontaktai</h3>
-            <p><strong>El. paštas:</strong> <a href="mailto:JŪSŲ_EL_PAŠTAS@jūsųdomenas.com">JŪSŲ_EL_PAŠTAS@jūsųdomenas.com</a></p>
-            <p><strong>Telefonas:</strong> JŪSŲ_TELEFONO_NUMERIS</p>
+            <p><strong>El. paštas:</strong> <a href="mailto:"></a></p>
+            <p><strong>Telefonas:</strong> </p>
         </div>
 
         <div class="footer-section social-links">
             <h3>Sekite mus</h3>
-            <a href="JŪSŲ_INSTAGRAM_NUORODA" target="_blank" class="social-icon">
+            <a href="https://www.instagram.com/dedeminusasz/" target="_blank" class="social-icon">
                 Instagram
             </a>
-            <a href="JŪSŲ_TELEGRAM_NUORODA" target="_blank" class="social-icon">
+            <a href="https://t.me/KissasBorisas/" target="_blank" class="social-icon">
                 Telegram
             </a>
         </div>
@@ -105,13 +105,13 @@
     // --- JavaScript Logika ---
     
     const products = [
-        { id: 1, name: "Red Apple Ice", category: "ice", image: "red_apple_ice.jpg", price: 5.00, date: new Date('2025-11-25') },
-        { id: 2, name: "Orange Zest", category: "citrus", image: "orange_zest.jpg", price: 5.50, date: new Date('2025-10-01') },
-        { id: 3, name: "Banana Ice", category: "ice", image: "banana_ice.jpg", price: 4.50, date: new Date('2025-12-01') },
-        { id: 4, name: "Butter Mints", category: "candy", image: "butter_mints.jpg", price: 6.00, date: new Date('2025-09-15') },
-        { id: 5, name: "Unicorn Shake", category: "dessert", image: "unicorn_shake.jpg", price: 5.00, date: new Date('2025-11-10') },
-        { id: 6, name: "Pineapple Coconut", category: "fruit", image: "pineapple_coconut.jpg", price: 4.00, date: new Date('2025-10-20') },
-        { id: 7, name: "Strawberry Ice Cream", category: "dessert", image: "strawberry_ice_cream.jpg", price: 5.00, date: new Date('2025-09-01') }
+        { id: 1, name: "Pear Banana", category: "dessert", image: "pear_banana.jpg", price: 5.00, date: new Date('2025-11-25') },
+        { id: 2, name: "Menthol", category: "citrus", image: "menthol.jpg", price: 5.00, date: new Date('2025-10-01') },
+        { id: 3, name: "Banana Ice", category: "ice", image: "banana_ice.jpg", price: 5.00, date: new Date('2025-12-01') }, //
+        { id: 4, name: "Butter Mints", category: "candy", image: "butter_mints.jpg", price: 5.00, date: new Date('2025-09-15') }, // 
+        { id: 5, name: "Strawberry Banana", category: "dessert", image: "strawberry_banana.jpg", price: 5.00, date: new Date('2025-11-10') },
+        { id: 6, name: "Blueberry Watermelon", category: "fruit", image: "blueberry_watermelon.jpg", price: 5.00, date: new Date('2025-10-20') }, // 
+        { id: 7, name: "Blue Ice Pop", category: "dessert", image: "blue_ice_pop.jpg", price: 5.00, date: new Date('2025-09-01') } }
     ];
 
     const SHIPPING_COST = 1.00;
@@ -164,7 +164,7 @@
         const container = document.getElementById('products-container');
         container.innerHTML = productsToRender.map(product => `
             <div class="card" data-category="${product.category}">
-                <span class="sale-tag">IŠPARDUOTA</span> 
+                <span class="sale-tag">NAUJIENA</span> 
                 <div class="product-image-container">
                     <img src="${product.image}" alt="${product.name} buteliukas" class="product-img">
                 </div>
@@ -224,3 +224,4 @@
 </script>
 </body>
 </html>
+
