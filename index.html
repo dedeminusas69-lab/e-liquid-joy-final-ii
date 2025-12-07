@@ -219,9 +219,25 @@
         summarySection.style.display = 'block';
     }
 
-    // Paleidžiama atvaizdavimo funkcija, kai amžius patvirtintas
-    // (Prieš tai tai buvo daroma verifyAge() viduje)
+// --- Amžiaus Patikrinimo Logika (Pataisytas kodas) ---
+    function verifyAge(isVerified) {
+        const modal = document.getElementById('age-verification-modal');
+        const body = document.getElementById('body-tag');
+
+        if (isVerified) {
+            modal.style.display = 'none';
+            body.classList.remove('modal-active');
+            
+            // Ši eilutė įjungia produktų atvaizdavimą. BŪTINAS!
+            renderProducts(products); 
+            
+        } else {
+            alert("Turinys skirtas tik suaugusiems. Jūs būsite nukreiptas į Google.");
+            window.location.href = "https://www.google.com";
+        }
+    }
 </script>
 </body>
 </html>
+
 
