@@ -42,7 +42,7 @@
     
     <div class="full-width-section">
         <h2 class="section-title">✨ Akcijos: Šios savaitės pasiūlymas!</h2>
-        <p class="promo-text">Perkant daugiau nei 4vnt. Nemokamas pristatymas iki penktadienio!</p>
+        <p class="promo-text">Perkant daugiau nei 4vnt. *Nemokamas pristatymas* iki penktadienio!</p>
     </div>
     
     <div class="products-grid" id="products-container">
@@ -58,17 +58,11 @@
             <p>Tarpinė suma: <span id="subtotal">0.00</span> €</p>
             <p>Pristatymas: <span id="shipping">1.00</span> €</p>
             <h3>Iš viso: <span id="total" class="brand-color">0.00</span> €</h3>
-            <button class="checkout-btn" onclick="alert('Užsakymas sėkmingas. Paspausk ant apačioje nurodytų soc. tinklų ir atsiūsk krepšelio nuotrauką)">Pirkti</button>
+            <button class="checkout-btn" onclick="alert('Užsakymas sėkmingas. Paspausk ant apačioje nurodytų soc. tinklų ir atsiųsk krepšelio nuotrauką')">Pirkti</button>
         </div>
     </div>
     
-    <div class="full-width-section">
-        <h2 class="section-title">📰 </h2>
-        <div class="news-item">
-            <h4></h4>
-            <p></p>
-        </div>
-        <div class="news-item">
+   
             <h4>Pristatymas per 1-2 dienas</h4>
             <p>Atnaujinome logistiką, dabar pristatome dar greičiau visoje Lietuvoje.</p>
         </div>
@@ -81,8 +75,8 @@
         
         <div class="footer-section contact-info">
             <h3>Kontaktai</h3>
-            <p><strong>El. paštas:</strong> <a href="mailto:"></a></p>
-            <p><strong>Telefonas:</strong> </p>
+            <p><strong>El. paštas:</strong> <a href="mailto:dedeminusasz@gmail.com">dedeminusasz@gmail.com</a></p>
+            <p><strong>Telefonas:</strong> +370 6XX XXX XX</p>
         </div>
 
         <div class="footer-section social-links">
@@ -104,20 +98,22 @@
 <script>
     // --- JavaScript Logika ---
     
+    // PRODUKTŲ SĄRAŠAS (Koreguotas, kad būtų tvarkingas)
     const products = [
         { id: 1, name: "Pear Banana", category: "dessert", image: "pear_banana.jpg", price: 5.00, date: new Date('2025-11-25') },
-        { id: 2, name: "Menthol", category: "citrus", image: "menthol.jpg", price: 5.00, date: new Date('2025-10-01') },
-        { id: 3, name: "Banana Ice", category: "ice", image: "banana_ice.jpg", price: 5.00, date: new Date('2025-12-01') }, //
-        { id: 4, name: "Butter Mints", category: "candy", image: "butter_mints.jpg", price: 5.00, date: new Date('2025-09-15') }, // 
+        { id: 2, name: "Menthol", category: "ice", image: "menthol.jpg", price: 5.00, date: new Date('2025-10-01') },
+        { id: 3, name: "Banana Ice", category: "ice", image: "banana_ice.jpg", price: 5.00, date: new Date('2025-12-01') },
+        { id: 4, name: "Butter Mints", category: "candy", image: "butter_mints.jpg", price: 5.00, date: new Date('2025-09-15') },
         { id: 5, name: "Strawberry Banana", category: "dessert", image: "strawberry_banana.jpg", price: 5.00, date: new Date('2025-11-10') },
-        { id: 6, name: "Blueberry Watermelon", category: "fruit", image: "blueberry_watermelon.jpg", price: 5.00, date: new Date('2025-10-20') }, // 
-        { id: 7, name: "Blue Ice Pop", category: "dessert", image: "blue_ice_pop.jpg", price: 5.00, date: new Date('2025-09-01') } }
-    ];
+        { id: 6, name: "Blueberry Watermelon", category: "fruit", image: "blueberry_watermelon.jpg", price: 5.00, date: new Date('2025-10-20') }, 
+        { id: 7, name: "Blue Ice Pop", category: "dessert", image: "blue_ice_pop.jpg", price: 5.00, date: new Date('2025-09-01') }
+    ]; // TRŪKSTAMO UŽDAROMOJO SKLIAUSTELIO ']' PATAISYMAS
 
     const SHIPPING_COST = 1.00;
     
     let cart = [];
 
+    // FUNKCIJA PATAISYTA IR VEIKIA TEISINGAI
     function verifyAge(isVerified) {
         const modal = document.getElementById('age-verification-modal');
         const body = document.getElementById('body-tag');
@@ -218,26 +214,6 @@
         
         summarySection.style.display = 'block';
     }
-
-// --- Amžiaus Patikrinimo Logika (Pataisytas kodas) ---
-    function verifyAge(isVerified) {
-        const modal = document.getElementById('age-verification-modal');
-        const body = document.getElementById('body-tag');
-
-        if (isVerified) {
-            modal.style.display = 'none';
-            body.classList.remove('modal-active');
-            
-            // Ši eilutė įjungia produktų atvaizdavimą. BŪTINAS!
-            renderProducts(products); 
-            
-        } else {
-            alert("Turinys skirtas tik suaugusiems. Jūs būsite nukreiptas į Google.");
-            window.location.href = "https://www.google.com";
-        }
-    }
 </script>
 </body>
 </html>
-
-
