@@ -1,21 +1,22 @@
-* --- PAGRINDINIAI BENDRI STILIAI (LIGHT MODE) --- */
+/* Nustatome žalią spalvą kintamajam */
+:root {
+    --brand-color: #008000; 
+}
 
+/* --- PAGRINDINIAI BENDRI STILIAI (LIGHT MODE) --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f4f4; /* Labai šviesus fonas */
     color: #333333; /* Tamsus šrifto tekstas */
     margin: 0;
     padding: 0;
-    /* Nustatome žalią spalvą kintamajam, kad CSS dalis būtų švaresnė */
-    --brand-color: #008000; 
 }
 
 .brand-color { 
-    color: var(--brand-color); /* Naudojame naują žalią akcento spalvą */
+    color: var(--brand-color);
 }
 
 /* --- AGE VERIFICATION MODAL STILIAI --- */
-
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -72,11 +73,11 @@ body {
 /* --- SVETAINĖS TURINIO IŠDĖSTYMAS IR NAVIGACIJA --- */
 
 header {
-    background-color: #ffffff;
-    padding: 15px 20px;
+    background-color: #1a1a1a; /* Tamsi antraštė geresniam kontrastui */
+    padding: 20px;
     text-align: left;
-    border-bottom: 1px solid #dddddd;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-bottom: 2px solid var(--brand-color); /* Ryški apatinė linija */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -84,23 +85,25 @@ header {
 
 /* 3D / GILUMO EFEKTO PAVADINIMAS */
 header h1 {
-    font-family: 'Bebas Neue', sans-serif; /* Naujas šriftas */
-    font-size: 3.5rem; /* Padidiname, kad geriau matytųsi */
+    font-family: 'Bebas Neue', sans-serif; 
+    font-size: 3.5rem; 
     margin: 0;
-    /* KURIA 3D / GILUMO EFEKTĄ: */
+    /* 3D / GILUMO EFEKTAS: */
     text-shadow: 
-        2px 2px 0 #999999, /* Šešėlio sluoksniai, imituojantys gylį */
+        2px 2px 0 #999999, 
         4px 4px 0 #777777,
         6px 6px 0 #555555,
-        8px 8px 0 #333333; /* Galutinė gylio spalva */
-    line-height: 1; /* Sulyginame eilutę */
-    color: #FFFFFF; /* Pagrindinė spalva yra balta */
+        8px 8px 0 #333333; 
+    line-height: 1; 
+    color: #FFFFFF; /* Balta/Šviesi spalva ant tamsaus fono */
 }
 
+/* Antraštės aprašymas */
 header p {
-    color: #666;
-    margin: 5px 0 0;
-    font-size: 0.9rem;
+    color: #cccccc; /* Šviesus tekstas ant tamsaus fono */
+    margin: 10px 0 0;
+    font-size: 1rem;
+    font-weight: 300;
 }
 
 .container {
@@ -116,21 +119,26 @@ header p {
 
 .sidebar-top {
     width: 100%;
-    background-color: #ffffff;
+    background-color: #333333; /* Tamsus fonas rūšiavimo juostai */
+    color: #ffffff; /* Šviesus tekstas */
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 30px;
-    border: 1px solid #eee;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border: 1px solid #444;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-top h2 {
+    color: #ffffff; /* Balta antraštė */
 }
 
 select {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    color: #333;
+    border: 1px solid #666; /* Patamsintas rėmelis */
+    background-color: #4a4a4a; /* Tamsesnis laukelio fonas */
+    color: #ffffff;
     font-size: 1rem;
     margin-top: 10px;
 }
